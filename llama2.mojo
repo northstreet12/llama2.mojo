@@ -888,6 +888,9 @@ fn sample(probabilities: TensorF32) -> Int:
 
 
 fn bpe_encode(inout tokens: List[Int], text: String, inout tok: Tokenizer):
+    if (len(text) > 0):
+        tokens.append(tok.find(str_to_ptr(' ')))
+
     for pos in range(len(text)):
         var char = str_to_ptr(text[pos])
         var id = tok.find(char)
